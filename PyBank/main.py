@@ -14,11 +14,11 @@ with open('Resources/budget_data.csv', newline='') as csvfile:
     for row in budget_data:
         date.append(row[0])
         profit_loss.append(row[1])
-        
+
 #count months (rows) in budget_data
-    months = sum(1 for row in budget_data)-1
+    months = sum(1 for row in date)-1
 
 # #print Financial Analysis
 #     print("Financial Analysis")
 #     print("--------------------------------")
-#     print("Total Months: "+ str(months))
+    print("Total Months: "+ str(months))
