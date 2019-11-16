@@ -60,18 +60,3 @@ analysis.close()
 analysis = open("Financial_Analysis.txt","r+")
 #print contents
 print(analysis.read())
-
-
-# ##Print Financial Analysis
-#     print("Financial Analysis")
-#     print("--------------------------------")
-#     print("Total Months: "+ str(months))
-#     print("Total: $"+str(net))
-#     print("Average Change: $"+str(avg_change))
-#     print("Greatest Increase in Profits: "+max_date+" ($"+str(max_change)+")")
-#     print("Greatest Decrease in Profits:"+min_date+" ($"+str(min_change)+")")
-
-# #print statement for testing
-# print(change[0])
-# print(change[-1])
-# print(avg_change)
