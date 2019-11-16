@@ -1,3 +1,4 @@
+import os
 import csv
 
 voter_id = []
@@ -5,7 +6,7 @@ county = []
 candidate = []
 
 #Open & parse election_data.csv
-with open("Resources/election_data.csv","r") as textfile:
+with open(os.path.join('Resources','election_data.csv'),'r') as textfile:
     election_data = csv.reader(textfile)
     header = next(election_data)
     for row in election_data:
@@ -42,21 +43,21 @@ for i in range(len(unique_candatites)):
     polls.append(entry)
 
 #Establishing format in list
-lines = ["Election Results\n",
-    "-------------------------\n",
-    "Total Votes: " + str(votes) + "\n",
-    "-------------------------\n",
-    "-------------------------\n",
-    "Winner: "+ winner +"\n",
-    "------------------------"]
+lines = ['Election Results\n',
+    '-------------------------\n',
+    'Total Votes: ' + str(votes) + '\n',
+    '-------------------------\n',
+    '-------------------------\n',
+    'Winner: ' + winner +'\n',
+    '------------------------']
 
 #add stats to lines
 for entry in polls:
-    lines.insert(-3,entry[0]+": "+str(entry[1])+"% ("+str(entry[2])+")\n")
+    lines.insert(-3,entry[0]+': '+str(entry[1])+'% ('+str(entry[2])+')\n')
 
 #Create, write and read analysis file
-analysis = open("Election_Analysis.txt","w+")
+analysis = open('Election_Analysis.txt','w+')
 analysis.writelines(lines)
 analysis.close()
-analysis = open("Election_Analysis.txt","r+")
+analysis = open('Election_Analysis.txt','r+')
 print(analysis.read())
