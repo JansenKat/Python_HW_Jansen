@@ -1,20 +1,35 @@
-#Define Lists
-voter = []
+import csv
+
+voter_id = []
 county = []
 candidate = []
 
-
 #Open election_data.csv
-with open("Resources/election_data.csv","r") as election_data:
+with open("Resources/election_data.csv","r") as textfile:
+    election_data = csv.reader(textfile)
+    header = next(election_data)
     for row in election_data:
-        row = row.strip().split(",")
-        voter.append(row[0])
+        voter_id.append(row[0])
         county.append(row[1])
-        candidate.append(row[2])
+        candidate.append(row[2].strip())
 
-votes = sum(1 for row in voter)
+votes = sum(1 for row in voter_id)
+
+unique_candatites = []
+candadite_votes = []
+polls = [unique_candatites,candadite_votes]
+
+for person in candidate:
+    if person in unique_candatites:
+        candadite_votes[unique_candatites.index(person)] +=1
+    else:
+        unique_candatites.append(person)
+        candadite_votes.append(0)
+
+print(polls)
+
 #Create analysis file
-analysis = open("Election_Analysis.txt","w+")
+#analysis = open("Election_Analysis.txt","w+")
 
 Lines = ["Election Results\n","-------------------------\n",
     "Total Votes: " + str(votes) + "\n" 
