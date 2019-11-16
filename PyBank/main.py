@@ -32,28 +32,26 @@ with open('Resources/budget_data.csv', newline='') as csvfile:
 #average change array, rounded to hundredths place
 #this is not returning the correct value
     avg_change = round(sum(change)/len(change),2)
-#Find value/index/date of max value in change array
+#find value/index/date of max value in change array
 #+1 to account for shift when calculating diff between elements
     max_change = max(change)
     max_index = change.index(max_change) +1
-    max_row = date[max_index] + " ($"+str(max_change)+")"
+    max_date = date[max_index]
 
-#Find value/index/date of min value in change array
+#find value/index/date of min value in change array
 #+1 to account for shift when calculating diff between elements
     min_change = min(change)
     min_index = change.index(min_change) +1
-    min_row = date[min_index] + " ($"+str(min_change)+")"
+    min_date = date[min_index]
 
-
-#print statement for testing
-print(min_row)
-
-
-# ##print Financial Analysis
+# ##Print Financial Analysis
 #     print("Financial Analysis")
 #     print("--------------------------------")
 #     print("Total Months: "+ str(months))
 #     print("Total: $"+str(net))
 #     print("Average Change: ")
-#     print("Greatest Increase in Profits: ")
-#     print("Greatest Decrease in Profits:")
+#     print("Greatest Increase in Profits: "+max_date+" ($"+str(max_change)+")")
+#     print("Greatest Decrease in Profits:"+min_date" ($"+str(min_change)+")")
+
+#print statement for testing
+print(min_row)
