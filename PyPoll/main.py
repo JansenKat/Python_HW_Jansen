@@ -31,17 +31,26 @@ for votes in candadite_votes:
 
 winner_index = candadite_votes.index(max(candadite_votes))
 winner = unique_candatites[winner_index]
-print(winner)
 
-#Create analysis file
-#analysis = open("Election_Analysis.txt","w+")
+polls = []
+for i in range(len(unique_candatites)):
+    entry = [unique_candatites[i],candidate_percentage[i],candadite_votes[i]]
+    polls.append(entry)
 
-Lines = ["Election Results\n","-------------------------\n",
-    "Total Votes: " + str(votes) + "\n" 
-    +"-------------------------\n",
-# Khan: 63.000% (2218231)
-# Correy: 20.000% (704200)
-# Li: 14.000% (492940)
-# O'Tooley: 3.000% (105630)
+lines = ["Election Results\n",
     "-------------------------\n",
-    "Winner: "+ "'------------------------"]
+    "Total Votes: " + str(votes) + "\n",
+    "-------------------------\n",
+    "-------------------------\n",
+    "Winner: "+ winner +"\n",
+    "------------------------"]
+
+#add stats to lines
+for entry in polls:
+    lines.insert(-3,entry[0]+": "+str(entry[1])+"% ("+str(entry[2])+")\n")
+
+analysis = open("Election_Analysis.txt","w+")
+analysis.writelines(lines)
+analysis.close()
+analysis = open("Election_Analysis.txt","r+")
+print(analysis.read())
