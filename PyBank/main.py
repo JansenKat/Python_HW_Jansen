@@ -44,14 +44,32 @@ with open('Resources/budget_data.csv', newline='') as csvfile:
     min_index = change.index(min_change) +1
     min_date = date[min_index]
 
-##Print Financial Analysis
-    print("Financial Analysis")
-    print("--------------------------------")
-    print("Total Months: "+ str(months))
-    print("Total: $"+str(net))
-    print("Average Change: $"+str(avg_change))
-    print("Greatest Increase in Profits: "+max_date+" ($"+str(max_change)+")")
-    print("Greatest Decrease in Profits:"+min_date+" ($"+str(min_change)+")")
+##Text File
+#Create text file
+analysis = open("Financial_Analysis.txt","a")
+#put all strings in a list
+lines = ["Financial Analysis \n","-------------------------------- \n",
+    "Total Months: "+ str(months)+"\n","Total: $"+str(net)+"\n","Average Change: $"+str(avg_change)+"\n",
+    "Greatest Increase in Profits: "+max_date+" ($"+str(max_change)+") \n",
+    "Greatest Decrease in Profits:"+min_date+" ($"+str(min_change)+")"]
+#write string List to text file
+analysis.writelines(lines)
+#close file to change access mode
+analysis.close()
+#open file to read
+analysis = open("Financial_Analysis.txt","r+")
+#print contents
+print(analysis.read())
+
+
+# ##Print Financial Analysis
+#     print("Financial Analysis")
+#     print("--------------------------------")
+#     print("Total Months: "+ str(months))
+#     print("Total: $"+str(net))
+#     print("Average Change: $"+str(avg_change))
+#     print("Greatest Increase in Profits: "+max_date+" ($"+str(max_change)+")")
+#     print("Greatest Decrease in Profits:"+min_date+" ($"+str(min_change)+")")
 
 # #print statement for testing
 # print(change[0])
