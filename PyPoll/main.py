@@ -17,7 +17,6 @@ total_votes = sum(1 for row in voter_id)
 
 unique_candatites = []
 candadite_votes = []
-polls = [unique_candatites,candadite_votes]
 
 for person in candidate:
     if person in unique_candatites:
@@ -29,8 +28,10 @@ for person in candidate:
 candidate_percentage = []
 for votes in candadite_votes:
     candidate_percentage.append(round(votes/total_votes*100,3))
-polls.append(candidate_percentage)
-print(polls)
+
+winner_index = candadite_votes.index(max(candadite_votes))
+winner = unique_candatites[winner_index]
+print(winner)
 
 #Create analysis file
 #analysis = open("Election_Analysis.txt","w+")
