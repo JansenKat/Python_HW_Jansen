@@ -13,7 +13,7 @@ with open("Resources/election_data.csv","r") as textfile:
         county.append(row[1])
         candidate.append(row[2].strip())
 
-votes = sum(1 for row in voter_id)
+total_votes = sum(1 for row in voter_id)
 
 unique_candatites = []
 candadite_votes = []
@@ -26,6 +26,10 @@ for person in candidate:
         unique_candatites.append(person)
         candadite_votes.append(0)
 
+candidate_percentage = []
+for votes in candadite_votes:
+    candidate_percentage.append(round(votes/total_votes*100,3))
+polls.append(candidate_percentage)
 print(polls)
 
 #Create analysis file
