@@ -9,15 +9,14 @@ with open(user_input,'r') as txt:
     text = txt.read()
     words = re.split(' ',text)
     sentences = re.split('(?<=[.!?])+',text)
-print(len(words))
+
+
 #Count words and word lengths
 word_len = []
 for word in words:
-    if len(word)>0:
-        clean = word.strip().strip(',').strip('.').strip('\'')
-        #print(clean)
-        #print(len(clean))
-        word_len.append(len(clean))
+    clean = word.strip()
+    word_len.append(len(clean))
+        
 word_count = len(word_len)
 avg_word_len = round(sum(word_len)/word_count,1)
 
@@ -27,10 +26,11 @@ for sent in sentences:
         if len(sent)>0:
             clean = sent.strip().strip(',').strip('.').split(' ')
             sent_len.append(len(clean))
+
 sent_count = len(sent_len)
 avg_sent_len = round(sum(sent_len)/sent_count,1)
 
-
+#Format lines, create, write, and read output file
 Lines = ['Paragraph Analysis\n',
     '-----------------\n',
     'Approximate Word Count: ' + str(word_count) + '\n',
