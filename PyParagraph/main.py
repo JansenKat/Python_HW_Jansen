@@ -9,25 +9,27 @@ with open(user_input,'r') as txt:
     text = txt.read()
     words = re.split(' ',text)
     sentences = re.split('(?<=[.!?])+',text)
-
+print(len(words))
 #Count words and word lengths
-word_count = len(words) + 1
 word_len = []
-
 for word in words:
-    word_len.append(len(word))
-
+    if len(word)>0:
+        clean = word.strip().strip(',').strip('.').strip('\'')
+        #print(clean)
+        #print(len(clean))
+        word_len.append(len(clean))
+word_count = len(word_len)
 avg_word_len = round(sum(word_len)/word_count,1)
 
 #Count sentences and lengths
-sent_count = len(sentences) + 1
 sent_len = []
-
 for sent in sentences:
-    sent = sent.split(' ')
-    sent_len.append(len(sent)+1)
-
+        if len(sent)>0:
+            clean = sent.strip().strip(',').strip('.').split(' ')
+            sent_len.append(len(clean))
+sent_count = len(sent_len)
 avg_sent_len = round(sum(sent_len)/sent_count,1)
+
 
 Lines = ['Paragraph Analysis\n',
     '-----------------\n',
