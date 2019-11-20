@@ -12,6 +12,7 @@ with open(user_input,'r') as txt:
 
 
 #Count words and word lengths
+#Contractions and hyphonated words count as a single word
 word_len = []
 for word in words:
     clean = word.strip()
