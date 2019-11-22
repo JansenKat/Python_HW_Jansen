@@ -47,5 +47,5 @@ lines = ['Financial Analysis \n',
 
 analysis.writelines(lines)
 analysis.close()
-analysis = open('Financial_Analysis.txt','r+')
+analysis = open('Financial_Analysis.txt','r')
 print(analysis.read())
