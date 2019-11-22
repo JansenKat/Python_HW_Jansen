@@ -12,9 +12,11 @@ with open('Employee_Analysis.csv','w+') as clean:
         #Read, split name, and write row
         #may be able to ise dict or list comprehension for this
         for row in data:
-            new_row = row[:]
-            name = new_row.pop(1).split(' ')
-            new_row.insert(1,name[0])
-            new_row.insert(2,name[1])
+            new_row = row.copy()
+            full_name = new_row.pop('Name')
+            full_name = full_name.split(' ')
+            new_row['First Name'] = full_name[0]
+            new_row['Last Name'] = full_name[1]
+            new_row['DOB'] = datetime.datetime.strptime(new_row['DOB'], '%Y-%m-%d').strftime('%m/%d/%y')
             writer.writerow(new_row)
     
