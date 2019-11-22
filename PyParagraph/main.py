@@ -10,7 +10,6 @@ with open(user_input,'r') as txt:
     words = re.split(' ',text)
     sentences = re.split('(?<=[.!?])+',text)
 
-
 #Count words and word lengths
 #Contractions and hyphonated words count as a single word
 word_len = []
@@ -33,11 +32,11 @@ avg_sent_len = round(sum(sent_len)/sent_count,1)
 
 #Format lines, create, write, and read output file
 Lines = ['Paragraph Analysis\n',
-    '-----------------\n',
-    'Approximate Word Count: ' + str(word_count) + '\n',
-    'Approximate Sentence Count: ' + str(sent_count) + '\n'
-    'Average Letter Count: ' + str(avg_word_len) + '\n',
-    'Average Sentence Length: ' + str(avg_sent_len)]
+    '-------------------\n',
+    f'Approximate Word Count: {word_count}\n',
+    f'Approximate Sentence Count: {sent_count}\n'
+    f'Average Letter Count: {avg_word_len}\n',
+    f'Average Sentence Length: {avg_sent_len}']
 
 output = open('Paragraph_Analysis.txt','w+')
 output.writelines(Lines)
