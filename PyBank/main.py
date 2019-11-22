@@ -38,12 +38,12 @@ min_date = date[min_index]
 analysis = open('Financial_Analysis.txt','w+')
 
 lines = ['Financial Analysis \n',
-    "--------------------------------\n',
-    'Total Months: ' + str(months) + '\n',
-    'Total: $' + str(net) + '\n',
-    'Average Change: $' + str(avg_change) + '\n',
-    'Greatest Increase in Profits: ' + max_date + ' ($' + str(max_change) + ') \n',
-    'Greatest Decrease in Profits:' + min_date + ' ($' + str(min_change) + ')']
+    '--------------------------------\n',
+    f'Total Months: {months}\n',
+    f'Total: ${net} + \n',
+    f'Average Change: ${avg_change}\n',
+    f'Greatest Increase in Profits: {max_date} (${max_change}) \n',
+    f'Greatest Decrease in Profits: {min_date} (${min_change})']
 
 analysis.writelines(lines)
 analysis.close()
