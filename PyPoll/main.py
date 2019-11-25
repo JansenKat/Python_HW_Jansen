@@ -1,5 +1,6 @@
 import os
 import csv
+import pprint
 
 voter_id = []
 county = []
@@ -23,8 +24,7 @@ candadite_votes = [candadite.count(person) for person in unique_candatites]
 
 #Calculate percentage
 candidate_percentage = []
-for votes in candadite_votes:
-    candidate_percentage.append(round(votes/total_votes*100,3))
+candidate_percentage = [round(votes/total_votes*100,3) for votes in candadite_votes]
 
 #Identify winner
 winner_index = candadite_votes.index(max(candadite_votes))
@@ -36,18 +36,24 @@ for i in range(len(unique_candatites)):
     entry = [unique_candatites[i],candidate_percentage[i],candadite_votes[i]]
     polls.append(entry)
 
+keys = ['Candadite','Percentage','Votes']
+polls = [{'Candadite':unique_candatites, 'Percentage': candidate_percentage, 'Votes': candadite_votes}
+        for unique_candatites, candidate_percentage, candadite_votes in zip(unique_candatites, candidate_percentage, candadite_votes)
+       ]
+polls = sorted(polls, key = lambda i: int(i['Votes']),reverse=True)
+
 #Establishing format in list
 lines = ['Election Results\n',
     '-------------------------\n',
-    f'Total Votes: {votes}\n',
+    f'Total Votes: {total_votes}\n',
     '-------------------------\n',
     '-------------------------\n',
     f'Winner: {winner}\n',
     '-------------------------']
 
-#add stats to lines
-for entry in polls:
-    lines.insert(-3,f'{entry[0]}: {entry[1]}% ({entry[2]})\n')
+#add stats to lines]
+# for entry in polls:
+#     lines.insert(-3,f'{entry[0]}: {entry[1]}% ({entry[2]})\n')
 
 #Create, write and read analysis file
 analysis = open('Election_Analysis.txt','w+')
