@@ -7,11 +7,10 @@ change = []
 
 #Open & parse budget_data
 with open(os.path.join('Resources','budget_data.csv'), 'r') as csvfile:
-    budget_data = csv.reader(csvfile)
-    header = next(budget_data)
+    budget_data = csv.DictReader(csvfile)
     for row in budget_data:
-        date.append(row[0])
-        profit_loss.append(row[1])
+        date.append(row['Date'])
+        profit_loss.append(row['Profit/Losses'])
 
 #cast all elements of profit_loss as integers
 profit_loss = [ int(row) for row in profit_loss]
@@ -40,7 +39,7 @@ analysis = open('Financial_Analysis.txt','w+')
 lines = ['Financial Analysis \n',
     '--------------------------------\n',
     f'Total Months: {months}\n',
-    f'Total: ${net} + \n',
+    f'Total: ${net}\n',
     f'Average Change: ${avg_change}\n',
     f'Greatest Increase in Profits: {max_date} (${max_change}) \n',
     f'Greatest Decrease in Profits: {min_date} (${min_change})']
