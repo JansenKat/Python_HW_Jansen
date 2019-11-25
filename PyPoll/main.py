@@ -31,11 +31,6 @@ winner_index = candadite_votes.index(max(candadite_votes))
 winner = unique_candatites[winner_index]
 
 #Compile poll statistics
-polls = []
-for i in range(len(unique_candatites)):
-    entry = [unique_candatites[i],candidate_percentage[i],candadite_votes[i]]
-    polls.append(entry)
-
 keys = ['Candadite','Percentage','Votes']
 polls = [{'Candadite':unique_candatites, 'Percentage': candidate_percentage, 'Votes': candadite_votes}
         for unique_candatites, candidate_percentage, candadite_votes in zip(unique_candatites, candidate_percentage, candadite_votes)
