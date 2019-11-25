@@ -45,15 +45,15 @@ for i in range(len(unique_candatites)):
 #Establishing format in list
 lines = ['Election Results\n',
     '-------------------------\n',
-    'Total Votes: ' + str(votes) + '\n',
+    f'Total Votes: {votes}\n',
     '-------------------------\n',
     '-------------------------\n',
-    'Winner: ' + winner +'\n',
-    '------------------------']
+    f'Winner: {winner}\n',
+    '-------------------------']
 
 #add stats to lines
 for entry in polls:
-    lines.insert(-3,entry[0]+': '+str(entry[1])+'% ('+str(entry[2])+')\n')
+    lines.insert(-3,f'{entry[0]}: {entry[1]}% ({entry[2]})\n')
 
 #Create, write and read analysis file
 analysis = open('Election_Analysis.txt','w+')
