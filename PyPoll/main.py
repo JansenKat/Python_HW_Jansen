@@ -32,10 +32,11 @@ winner = unique_candatites[winner_index]
 
 #Compile poll statistics
 keys = ['Candadite','Percentage','Votes']
-polls = [{'Candadite':unique_candatites, 'Percentage': candidate_percentage, 'Votes': candadite_votes}
+polls = [{keys[0]:unique_candatites, keys[1]:candidate_percentage, keys[2]:candadite_votes}
         for unique_candatites, candidate_percentage, candadite_votes in zip(unique_candatites, candidate_percentage, candadite_votes)
        ]
 polls = sorted(polls, key = lambda i: int(i['Votes']),reverse=True)
+
 
 #Establishing format in list
 lines = ['Election Results\n',
@@ -47,8 +48,8 @@ lines = ['Election Results\n',
     '-------------------------']
 
 #add stats to lines]
-# for entry in polls:
-#     lines.insert(-3,f'{entry[0]}: {entry[1]}% ({entry[2]})\n')
+for entry in polls:
+    lines.insert(-3,f'{entry['Candadite']}: {entry['Percentage']}% ({entry['Votes']})\n')
 
 #Create, write and read analysis file
 analysis = open('Election_Analysis.txt','w+')
