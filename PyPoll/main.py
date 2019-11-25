@@ -3,7 +3,7 @@ import csv
 
 voter_id = []
 county = []
-candidate = []
+candadite = []
 
 #Open & parse election_data.csv
 with open(os.path.join('Resources','election_data.csv'),'r') as textfile:
@@ -11,17 +11,15 @@ with open(os.path.join('Resources','election_data.csv'),'r') as textfile:
     for row in election_data:
         voter_id.append(row['Voter ID'])
         county.append(row['County'])
-        candidate.append(row['Candidate'].strip())
+        candadite.append(row['Candidate'].strip())
 
 total_votes = len(voter_id)
 
-unique_candatites = []
-unique_candatites = list(set(candidate))
-candadite_votes = []
-
 #Summarize candidate and votes information
-for person in unique_candatites:
-    candadite_votes.append(candidate.count(person))
+unique_candatites = []
+unique_candatites = list(set(candadite))
+candadite_votes = []
+candadite_votes = [candadite.count(person) for person in unique_candatites]
 
 #Calculate percentage
 candidate_percentage = []
