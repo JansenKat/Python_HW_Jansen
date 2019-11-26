@@ -1,6 +1,5 @@
 import os
 import csv
-import pprint
 
 voter_id = []
 county = []
@@ -35,8 +34,8 @@ keys = ['Candadite','Percentage','Votes']
 polls = [{keys[0]:unique_candatites, keys[1]:candidate_percentage, keys[2]:candadite_votes}
         for unique_candatites, candidate_percentage, candadite_votes in zip(unique_candatites, candidate_percentage, candadite_votes)
        ]
+#Sort polls by Votes Desc
 polls = sorted(polls, key = lambda i: int(i['Votes']),reverse=True)
-
 
 #Establishing format in list
 lines = ['Election Results\n',
@@ -53,6 +52,7 @@ winner_list = ['-------------------------\n',
             f'Winner: {winner}\n',
             '-------------------------']
 
+#Combine lists to write to analysis file
 lines = lines + winner_list
 
 #Create, write and read analysis file
