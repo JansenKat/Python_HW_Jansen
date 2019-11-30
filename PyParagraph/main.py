@@ -14,10 +14,8 @@ with open(user_input,'r') as txt:
 #Count words and word lengths
 #Contractions and hyphonated words count as a single word
 word_len = []
-for word in words:
-    clean = word.strip()
-    word_len.append(len(clean))
-        
+word_len = [len(word.strip()) for word in words]
+
 word_count = len(word_len)
 avg_word_len = round(sum(word_len)/word_count,1)
 
