@@ -13,16 +13,14 @@ with open(os.path.join('Resources','budget_data.csv'), 'r') as csvfile:
         profit_loss.append(row['Profit/Losses'])
 
 #cast all elements of profit_loss as integers
-profit_loss = [ int(row) for row in profit_loss]
+profit_loss = [int(row) for row in profit_loss]
 
 for i in range(len(profit_loss)-1):
     change.append(profit_loss[i+1] - profit_loss[i])
 
 #Summarize data
-months = sum(1 for row in date)
-
+months = len(date)
 net = sum(profit_loss)
-
 avg_change = round(sum(change)/len(change),2)
 
 max_change = max(change)
