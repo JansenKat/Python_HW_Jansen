@@ -41,19 +41,15 @@ polls = sorted(polls, key = lambda i: int(i['Votes']),reverse=True)
 lines = ['Election Results\n',
     '-------------------------\n',
     f'Total Votes: {total_votes}\n',
-    '-------------------------\n'
+    '-------------------------\n',
+    '-------------------------\n',
+    f'Winner: {winner}\n',
+    '-------------------------'
     ]
 
 #add stats to lines]
 for entry in polls:
-    lines.append(entry['Candadite']+ ': '+str(entry['Percentage'])+'% ('+str(entry['Votes'])+')\n')
-
-winner_list = ['-------------------------\n',
-            f'Winner: {winner}\n',
-            '-------------------------']
-
-#Combine lists to write to analysis file
-lines = lines + winner_list
+    lines.insert(-3,f"{entry['Candadite']}: {entry['Percentage']}% ({entry['Votes']}+)\n")
 
 #Create, write and read analysis file
 analysis = open('Election_Analysis.txt','w+')
