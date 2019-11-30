@@ -21,10 +21,7 @@ avg_word_len = round(sum(word_len)/word_count,1)
 
 #Count sentences and lengths
 sent_len = []
-for sent in sentences:
-        if len(sent)>0:
-            clean = sent.strip().strip(',').strip('.').split(' ')
-            sent_len.append(len(clean))
+sent_len = [len(sent.strip().strip(',').strip('.').split(' ')) for sent in sentences if len(sent) > 0]
 
 sent_count = len(sent_len)
 avg_sent_len = round(sum(sent_len)/sent_count,1)
