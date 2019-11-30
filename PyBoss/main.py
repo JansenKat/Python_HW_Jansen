@@ -18,11 +18,7 @@ with open('clean_employee_data.csv','w+') as clean:
     
     with open('employee_data.csv','r') as source:
         data = csv.DictReader(source)
-        
-        #Read, split name, and write row
         for row in data:
-            
-            #copy the row
             new_row = row.copy()
 
             #Separate first and last name
