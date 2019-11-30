@@ -52,8 +52,7 @@ for entry in polls:
     lines.insert(-3,f"{entry['Candadite']}: {entry['Percentage']}% ({entry['Votes']}+)\n")
 
 #Create, write and read analysis file
-analysis = open('Election_Analysis.txt','w+')
-analysis.writelines(lines)
-analysis.close()
-analysis = open('Election_Analysis.txt','r+')
-print(analysis.read())
+with open('Election_Analysis.txt','w+') as analysis:
+    analysis.writelines(lines)
+with open('Election_Analysis.txt','r+') as analysis:
+    print(analysis.read())
