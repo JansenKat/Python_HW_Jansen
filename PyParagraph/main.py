@@ -1,8 +1,9 @@
 import os
+import sys
 import re
 
-#user_input = input('Please provide path to text file.')
-user_input = 'raw_data/readme_test.txt'
+user_path = input('Please provide path to text file.')
+user_input = os.path.join(*re.split('[\\\/]', user_path))
 
 #Open, read and split text
 with open(user_input,'r') as txt:
