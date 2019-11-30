@@ -31,9 +31,6 @@ min_change = min(change)
 min_index = change.index(min_change) +1
 min_date = date[min_index]
 
-#Create, write and read Analysis file
-analysis = open('Financial_Analysis.txt','w+')
-
 lines = ['Financial Analysis \n',
     '--------------------------------\n',
     f'Total Months: {months}\n',
@@ -42,7 +39,8 @@ lines = ['Financial Analysis \n',
     f'Greatest Increase in Profits: {max_date} (${max_change}) \n',
     f'Greatest Decrease in Profits: {min_date} (${min_change})']
 
-analysis.writelines(lines)
-analysis.close()
-analysis = open('Financial_Analysis.txt','r')
-print(analysis.read())
+#Create, write and read Analysis file
+with open('Financial_Analysis.txt','w+') as analysis:
+    analysis.writelines(lines)
+with open('Financial_Analysis.txt','r') as analysis:
+    print(analysis.read())
